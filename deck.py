@@ -1,6 +1,5 @@
-from dataclasses import dataclass, field
 from random import randint
-from enum import Enum, IntEnum
+from card import Card, Suit, Rank
 
 
 def main():
@@ -20,44 +19,10 @@ def main():
     )
 
 
-# All suits have same importance
-class Suit(Enum):
-    SPADES = 1
-    CLUBS = 2
-    HEARTS = 3
-    DIAMONDS = 4
-
-
-class Rank(IntEnum):
-    ACE = 1
-    TWO = 2
-    THREE = 3
-    FOUR = 4
-    FIVE = 5
-    SIX = 6
-    SEVEN = 7
-    EIGHT = 8
-    NINE = 9
-    TEN = 10
-    JACK = 11
-    QUEEN = 12
-    KING = 13
-
-
-SUITS = list(Suit)
-RANKS = list(Rank)
-
-
-@dataclass(order=True)
-class Card:
-    suit: Suit = field(compare=False)
-    rank: Rank
-
-
 class DeckOfCards:
-    def __init__(self, suits=SUITS, ranks=RANKS):
-        self.suits = suits
-        self.ranks = ranks
+    def __init__(self, suits=None, ranks=None):
+        self.suits = list(Suit) if not suits else suits
+        self.ranks = list(Rank) if not ranks else ranks
 
         self.cards = self.get_new_deck()
 
