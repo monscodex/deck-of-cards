@@ -75,7 +75,8 @@ class DeckOfCards:
         self.cards = mixed_deck
 
     def _insert_card_in_random_place(self, card: Card, cards: list[Card]) -> None:
-        random_index = randint(0, len(cards) - 1)
+        # Include next index after the last card in the deck
+        random_index = randint(0, len(cards))
 
         cards.insert(random_index, card)
 
