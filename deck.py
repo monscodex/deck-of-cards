@@ -74,10 +74,10 @@ class DeckOfCards:
 
         self.cards = mixed_deck
 
-    def _insert_card_in_random_place(self, card: Card, deck: list[Card]) -> None:
-        random_index = randint(0, len(self.cards) - 1)
+    def _insert_card_in_random_place(self, card: Card, cards: list[Card]) -> None:
+        random_index = randint(0, len(cards) - 1)
 
-        deck.insert(random_index, card)
+        cards.insert(random_index, card)
 
     def distribute(self, number_of_payers: int) -> tuple[list[list[Card]], list[Card]]:
         """
